@@ -37,5 +37,16 @@ public abstract class DefensaAtacante extends Defensa {
     
     public abstract void atacar(Criatura enemigo);
     
+    //==========================================
+    // gets, setters
+    //==========================================
+
+    public int getDaño() {
+        return daño;
+    }
+
+    public void setDaño(int daño) {
+        this.daño = daño;
+    }
     
 }

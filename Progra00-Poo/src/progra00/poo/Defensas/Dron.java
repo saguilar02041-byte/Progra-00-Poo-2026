@@ -5,6 +5,7 @@
 package progra00.poo.Defensas;
 
 import progra00.poo.Criatura;
+import progra00.poo.Variantes.CortoAlcance;
 import progra00.poo.Variantes.Volar;
 
 public class Dron extends DefensaAtacante {
@@ -23,6 +24,7 @@ public class Dron extends DefensaAtacante {
     
     @Override
     public void atacar(Criatura enemigo) {
+        CortoAlcance.atacar(this, enemigo, this.getDaño());
     }
     
     public void volar() {

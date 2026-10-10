@@ -5,15 +5,21 @@
 package progra00.poo.Defensas;
 
 import progra00.poo.Criatura;
+import progra00.poo.Variantes.LargoAlcance;
 
 public class AlcanceMedio extends DefensaAtacante {
 
+    //===============Atributos==================
+    
+    private int alcance;
+    
     //==========================================
     // constructores
     //==========================================
     
-    public AlcanceMedio(String nombre, int vida, int daño) {
+    public AlcanceMedio(String nombre, int vida, int daño, int alcance) {
         super(nombre, vida, daño);
+        this.alcance = alcance;
     }
 
     //==========================================
@@ -22,7 +28,19 @@ public class AlcanceMedio extends DefensaAtacante {
     
     @Override
     public void atacar(Criatura enemigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        LargoAlcance.atacar(this, enemigo, this.getDaño(), alcance);
+    }
+
+    //==========================================
+    // gets, setters
+    //==========================================
+    
+    public int getAlcance() {
+        return alcance;
+    }
+
+    public void setAlcance(int alcance) {
+        this.alcance = alcance;
     }
     
 }

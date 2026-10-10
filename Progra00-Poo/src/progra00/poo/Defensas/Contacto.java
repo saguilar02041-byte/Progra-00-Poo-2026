@@ -5,6 +5,7 @@
 package progra00.poo.Defensas;
 
 import progra00.poo.Criatura;
+import progra00.poo.Variantes.CortoAlcance;
 
 public class Contacto extends DefensaAtacante {
     
@@ -22,7 +23,7 @@ public class Contacto extends DefensaAtacante {
     
     @Override
     public void atacar(Criatura enemigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        CortoAlcance.atacar(this, enemigo, this.getDaño());
     }
     
 }
