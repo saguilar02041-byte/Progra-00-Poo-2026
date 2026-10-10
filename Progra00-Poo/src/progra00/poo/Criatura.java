@@ -6,12 +6,17 @@ package progra00.poo;
 
 public abstract class Criatura extends Tropa{
     
+    //===============Atributos==================
+    
+    private int daño;
+    
     //==========================================
     // constructores
     //==========================================
     
     public Criatura(String nombre, int vida, int daño) {
-        super(nombre, vida, daño);
+        super(nombre, vida);
+        this.daño = daño;
     }
     
     //==========================================
@@ -27,5 +32,16 @@ public abstract class Criatura extends Tropa{
     
     public abstract void move(); 
     
-    
+    //==========================================
+    // gets, setters
+    //==========================================
+
+    public int getDaño() {
+        return daño;
+    }
+
+    public void setDaño(int daño) {
+        this.daño = daño;
+    }
+
 }

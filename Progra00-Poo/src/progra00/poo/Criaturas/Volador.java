@@ -6,10 +6,9 @@ package progra00.poo.Criaturas;
 
 import progra00.poo.Criatura;
 import progra00.poo.Defensa;
-import progra00.poo.Interfaces.iVoladores;
+import progra00.poo.Variantes.Volar;
 
-public class Volador extends Criatura implements iVoladores {
-    
+public class Volador extends Criatura {
     
     //==========================================
     // constructores
@@ -29,10 +28,7 @@ public class Volador extends Criatura implements iVoladores {
 
     @Override
     public void move() {
-    }
-
-    @Override
-    public void volar() {
+        Volar.volar(this);
     }
 
     

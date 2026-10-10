@@ -4,14 +4,14 @@
  */
 package progra00.poo;
 
-public abstract class Defensa extends Tropa{
+public abstract class Defensa extends Tropa {
 
     //==========================================
     // constructores
     //==========================================
 
-    public Defensa(String nombre, int vida, int daño) {
-        super(nombre, vida, daño);
+    public Defensa(String nombre, int vida) {
+        super(nombre, vida);
     }    
     
     //==========================================
@@ -19,11 +19,7 @@ public abstract class Defensa extends Tropa{
     //==========================================
     
     @Override
-    public boolean puedeAtacar(Tropa obj) {
-        return obj instanceof Criatura;        
-    }    
-    
-    public abstract void atacar(Criatura enemigo);
+    public abstract boolean puedeAtacar(Tropa obj);
     
     
 }

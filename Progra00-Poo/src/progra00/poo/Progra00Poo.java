@@ -6,7 +6,7 @@ package progra00.poo;
 
 import progra00.poo.Criaturas.*;
 import progra00.poo.Defensas.*;
-import progra00.poo.Interfaces.*;
+
 
 public class Progra00Poo {
 
