@@ -4,17 +4,59 @@
  */
 package progra00.poo;
 
-/**
- *
- * @author sebitas
- */
+import progra00.poo.Criaturas.*;
+import progra00.poo.Defensas.*;
+import progra00.poo.Interfaces.*;
+
 public class Progra00Poo {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+    
+        //esto es para copiar y ppegar en las clases
+    //==========================================
+    // Atributos
+    //==========================================
+    
+    
+    //==========================================
+    // constructores
+    //==========================================
+    
+    
+    //==========================================
+    // métodos
+    //==========================================
+    
+    
+    //==========================================
+    // gets, setters
+    //==========================================
+        //ignoremos
+        
+        
+    Defensa droncito = new Dron("droncito", 10, 10);
+    Volador mosca = new Volador("mosca", 10, 10);
+
+        System.out.println(droncito.puedeAtacar(mosca));
+        System.out.println(mosca.puedeAtacar(mosca));
+        
+        mosca.morir();
+        droncito.morir();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
 }
