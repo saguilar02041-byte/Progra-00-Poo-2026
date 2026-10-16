@@ -19,7 +19,7 @@ public class config {
     
 
     public static void main(String[] args) {
-        crearArchivo(); //Puedo ponerle una ruta y al final el nombre del archivo que quiero crear
+        //crearArchivo(); //Puedo ponerle una ruta y al final el nombre del archivo que quiero crear
         FrameLogin frameLog = new FrameLogin();
         frameLog.setVisible(true);
     }

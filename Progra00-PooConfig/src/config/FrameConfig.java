@@ -17,7 +17,7 @@ public class FrameConfig extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameConfig.class.getName());
 
-    private ArrayList<ConfigComponente> configuraciones = new ArrayList<>();
+    private final ArrayList<ConfigComponente> configuraciones = new ArrayList<>();
     
     /**
      * Creates new form FrameConfig
@@ -382,12 +382,24 @@ public class FrameConfig extends javax.swing.JFrame {
     int costo = Integer.parseInt(txfCosto.getText());
     int misionMinima = Integer.parseInt(txfMisionMinima.getText());
     
-    ConfigComponente componente = new ConfigComponente(tipo, nombre, categoria, tipo, vida, dano, frecuencia, alcance, radio, costo, misionMinima);
+    ConfigComponente componente = new ConfigComponente(nombre, categoria, tipo, vida, dano, frecuencia, alcance, radio, costo, misionMinima);
     
-    configuraciones.add(componente);
+    boolean anadido = anadirElemArray(componente);
+    if(anadido == true){
+        System.out.println("Elemento anadido");
+    }else{
+        System.out.println("Error");
+    }
         
     }//GEN-LAST:event_btnAnadirComponenteActionPerformed
 
+    private boolean anadirElemArray(ConfigComponente componente){
+        boolean anadido = configuraciones.add(componente);
+        if(anadido == true){
+            return true;
+        }
+        return false;  
+    }
     private void txfVidaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfVidaKeyReleased
         // TODO add your handling code here:
         String str = txfVida.getText();
@@ -480,7 +492,7 @@ public class FrameConfig extends javax.swing.JFrame {
     }//GEN-LAST:event_txfMisionMinimaKeyReleased
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        ManejoArchivos.escribirArchivo(configuraciones);
+        ManejoArchivos.crearEscribirArchivo(configuraciones);
     }//GEN-LAST:event_btnGuardarActionPerformed
     
     private boolean isNumeric(String str){

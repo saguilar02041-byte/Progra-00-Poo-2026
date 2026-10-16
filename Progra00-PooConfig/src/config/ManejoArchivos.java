@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * @author paula
  */
 public class ManejoArchivos {
-    private static String nombreArchivo = "componentes.txt";
+    private static final String nombreArchivo = "/home/paula/Documents/POO/Progra-00-Poo-2026/componentes.txt";
 
 
-    public static void crearArchivo(){
+    /*public static void crearArchivo(){
         try {
             
             FileOutputStream fileOut = new FileOutputStream(nombreArchivo);
@@ -26,17 +26,22 @@ public class ManejoArchivos {
             System.getLogger(ManejoArchivos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     
-    }
+    }*/
     
-    public static void escribirArchivo(ArrayList<ConfigComponente> lista) {
+    
+    
+    public static void crearEscribirArchivo(ArrayList<ConfigComponente> lista) {
+        
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {
-            out.writeObject(lista);   // se guarda toda la lista como un solo objeto
-            System.out.println("se guardo la lista");
+            
+            out.writeObject(lista);
+            System.out.println(lista+ "escrito");
+            
         } catch (IOException ex) {
-            System.getLogger(ManejoArchivos.class.getName())
-                  .log(System.Logger.Level.ERROR, (String) null, ex);
+            
+            System.getLogger(ManejoArchivos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-    }
+}
     
     
 
