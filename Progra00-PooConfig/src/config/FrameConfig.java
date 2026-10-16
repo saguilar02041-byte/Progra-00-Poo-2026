@@ -4,6 +4,7 @@
  */
 package config;
 
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -16,6 +17,8 @@ public class FrameConfig extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameConfig.class.getName());
 
+    private ArrayList<ConfigComponente> configuraciones = new ArrayList<>();
+    
     /**
      * Creates new form FrameConfig
      */
@@ -190,6 +193,7 @@ public class FrameConfig extends javax.swing.JFrame {
         btnGuardar.setBackground(new java.awt.Color(102, 0, 153));
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar Configuracion");
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnSalir.setBackground(new java.awt.Color(102, 0, 153));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,8 +371,21 @@ public class FrameConfig extends javax.swing.JFrame {
 
     private void btnAnadirComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirComponenteActionPerformed
 
-        String nombre = txfNombre.getText();
-        String categoria = (String)cmbCategoria.getSelectedItem();
+    String nombre = txfNombre.getText();
+    String categoria = (String)cmbCategoria.getSelectedItem();
+    String tipo = (String)cmbTipo.getSelectedItem();
+    int vida = Integer.parseInt(txfVida.getText());
+    int dano = Integer.parseInt(txfDano.getText());
+    int frecuencia = Integer.parseInt(txfFrecuencia.getText());
+    int alcance = Integer.parseInt(txfAlcance.getText());
+    int radio = Integer.parseInt(txfRadio.getText());
+    int costo = Integer.parseInt(txfCosto.getText());
+    int misionMinima = Integer.parseInt(txfMisionMinima.getText());
+    
+    ConfigComponente componente = new ConfigComponente(tipo, nombre, categoria, tipo, vida, dano, frecuencia, alcance, radio, costo, misionMinima);
+    
+    configuraciones.add(componente);
+        
     }//GEN-LAST:event_btnAnadirComponenteActionPerformed
 
     private void txfVidaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfVidaKeyReleased
@@ -461,6 +478,10 @@ public class FrameConfig extends javax.swing.JFrame {
             lblErrorMision.setText("Error, inserte numero valido");
         }
     }//GEN-LAST:event_txfMisionMinimaKeyReleased
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        ManejoArchivos.escribirArchivo(configuraciones);
+    }//GEN-LAST:event_btnGuardarActionPerformed
     
     private boolean isNumeric(String str){
         try{
@@ -511,48 +532,4 @@ public class FrameConfig extends javax.swing.JFrame {
     private javax.swing.JTextField txfRadio;
     private javax.swing.JTextField txfVida;
     // End of variables declaration//GEN-END:variables
-
-    public String getCmbCategoria() {
-        String item = (String)cmbCategoria.getSelectedItem();
-        return item;
-    }
-
-    public String getCmbTipo() {
-        String item = (String)cmbTipo.getSelectedItem();
-        return item;
-    }
-
-    public JTextField getTxfAlcance() {
-        return txfAlcance;
-    }
-
-    public JTextField getTxfCosto() {
-        return txfCosto;
-    }
-
-    public JTextField getTxfDano() {
-        return txfDano;
-    }
-
-    public JTextField getTxfFrecuencia() {
-        return txfFrecuencia;
-    }
-
-    public JTextField getTxfMisionMinima() {
-        return txfMisionMinima;
-    }
-
-    public JTextField getTxfNombre() {
-        return txfNombre;
-    }
-
-    public JTextField getTxfRadio() {
-        return txfRadio;
-    }
-
-    public JTextField getTxfVida() {
-        return txfVida;
-    }
-
-
 }

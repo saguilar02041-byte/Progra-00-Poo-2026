@@ -27,7 +27,24 @@ public class ConfigComponente implements Serializable{
     private String imgNormal;
     private String imgMovimiento;
     private String imgAtaque;
-    private boolean activo = true;
+    private boolean activo = false;
+    
+    //Constructor
+
+    public ConfigComponente(String id, String nombre, String categoria, String tipo, int vida, int dano, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.tipo = tipo;
+        this.vida = vida;
+        this.dano = dano;
+        this.frecuencia = frecuencia;
+        this.alcance = alcance;
+        this.radio = radio;
+        this.costo = costo;
+        this.misionMinima = misionMinima;
+    }
+    
 
     // GETTERS Y SETTERS
 

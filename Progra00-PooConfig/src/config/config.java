@@ -4,20 +4,29 @@
  */
 package config;
 
-import javax.swing.JOptionPane;
 
+import static config.ManejoArchivos.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 /**
  *
  * @author paula
  */
 public class config {
     
+
     public static void main(String[] args) {
+        crearArchivo(); //Puedo ponerle una ruta y al final el nombre del archivo que quiero crear
         FrameLogin frameLog = new FrameLogin();
-   // FrameConfig frame = new FrameConfig();
-    frameLog.setVisible(true);
-    
-    
+        frameLog.setVisible(true);
     }
+        
+    
+    
     
 }
+    
+
