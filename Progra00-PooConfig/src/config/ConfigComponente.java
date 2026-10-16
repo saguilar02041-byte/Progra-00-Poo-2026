@@ -11,7 +11,7 @@ package config;
 
 import java.io.Serializable;
 
-public class ConfigComponente {
+public class ConfigComponente implements Serializable{
     // ATRIBUTOS
     private String id;
     private String nombre;
@@ -150,7 +150,6 @@ public class ConfigComponente {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-    
     
 }
 
