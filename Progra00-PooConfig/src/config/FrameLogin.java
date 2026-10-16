@@ -128,8 +128,8 @@ public class FrameLogin extends javax.swing.JFrame {
         String usuario = "admin";
         String contrasena = "admin";
         
-        String user = txfUser.getText();
-        String pass = txfPassword.getText();
+        String user = txfUser.getText().trim();
+        String pass = txfPassword.getText().trim();
         
         if(user.equals(usuario) && (pass.equals(contrasena))){
             FrameConfig frame = new FrameConfig();

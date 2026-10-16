@@ -4,6 +4,7 @@
  */
 package config;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -85,6 +86,7 @@ public class FrameConfig extends javax.swing.JFrame {
         lblComponente1.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         lblComponente1.setText("Nombre:");
 
+        txfVida.addActionListener(this::txfVidaActionPerformed);
         txfVida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txfVidaKeyReleased(evt);
@@ -116,8 +118,42 @@ public class FrameConfig extends javax.swing.JFrame {
         lblFrecuencia.setText("Frecuencia:");
 
         txfDano.addActionListener(this::txfDanoActionPerformed);
+        txfDano.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txfDanoKeyReleased(evt);
+            }
+        });
+
+        txfRadio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txfRadioKeyReleased(evt);
+            }
+        });
+
+        txfCosto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txfCostoKeyReleased(evt);
+            }
+        });
+
+        txfAlcance.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txfAlcanceKeyReleased(evt);
+            }
+        });
 
         txfFrecuencia.addActionListener(this::txfFrecuenciaActionPerformed);
+        txfFrecuencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txfFrecuenciaKeyReleased(evt);
+            }
+        });
+
+        txfMisionMinima.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txfMisionMinimaKeyReleased(evt);
+            }
+        });
 
         lblMisionMinima.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         lblMisionMinima.setText("Mision minima:");
@@ -339,33 +375,92 @@ public class FrameConfig extends javax.swing.JFrame {
         // TODO add your handling code here:
         String str = txfVida.getText();
         if(isNumeric(str)){
-            lblErrorVida.setText("Error, inserte numero valido");
-        }else{
             lblErrorVida.setText("Numero entero > 0");
+        }else{
+            lblErrorVida.setText("Error, inserte numero valido");
         }
     }//GEN-LAST:event_txfVidaKeyReleased
 
     private void txfDanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfDanoActionPerformed
         // TODO add your handling code here:
-        String str = txfDano.getText();
-        if(isNumeric(str)){
-            lblErrorDano.setText("Error, inserte numero valido");
-        }else{
-            lblErrorDano.setText("Numero entero > 0");
-        }
+        
     }//GEN-LAST:event_txfDanoActionPerformed
 
     private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
         // TODO add your handling code here:
         String categoria = (String)cmbCategoria.getSelectedItem();
-        if(categoria == "Defensa"){
-            cmbTipo.addItem("Alcance Medio");
+        if(categoria.equals("Defensa")){
+            cmbTipo.setModel(modeloDefensa);
+        }else{
+            cmbTipo.setModel(modeloCriaturas);
         }
     }//GEN-LAST:event_cmbCategoriaActionPerformed
-
+    
+    private final DefaultComboBoxModel<String> modeloDefensa = new DefaultComboBoxModel<>(new String[]{"Alcance Medio", "Ataque Multiple", "Barrera", "Contacto", "Defensa Atacante", "Dron", "Impacto"});
+    private final DefaultComboBoxModel<String> modeloCriaturas = new DefaultComboBoxModel<>(new String[]{"Acechador", "Demoledor", "Enjambre", "Escupidor", "Volador"});
+    
+    
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txfVidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfVidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfVidaActionPerformed
+
+    private void txfDanoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfDanoKeyReleased
+        String str = txfDano.getText();
+        if(isNumeric(str)){
+            lblErrorDano.setText("Numero entero > 0");
+        }else{
+            lblErrorDano.setText("Error, inserte numero valido");
+        }
+    }//GEN-LAST:event_txfDanoKeyReleased
+
+    private void txfFrecuenciaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfFrecuenciaKeyReleased
+        String str = txfFrecuencia.getText();
+        if(isNumeric(str)){
+            lblErrorFrecuencia.setText("Numero entero > 0");
+        }else{
+            lblErrorFrecuencia.setText("Error, inserte numero valido");
+        }
+    }//GEN-LAST:event_txfFrecuenciaKeyReleased
+
+    private void txfAlcanceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfAlcanceKeyReleased
+        String str = txfAlcance.getText();
+        if(isNumeric(str)){
+            lblErrorAlcance.setText("Numero entero > 0");
+        }else{
+            lblErrorAlcance.setText("Error, inserte numero valido");
+        }
+    }//GEN-LAST:event_txfAlcanceKeyReleased
+
+    private void txfRadioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfRadioKeyReleased
+        String str = txfRadio.getText();
+        if(isNumeric(str)){
+            lblErrorRadio.setText("Numero entero > 0");
+        }else{
+            lblErrorRadio.setText("Error, inserte numero valido");
+        }
+    }//GEN-LAST:event_txfRadioKeyReleased
+
+    private void txfCostoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfCostoKeyReleased
+        String str = txfCosto.getText();
+        if(isNumeric(str)){
+            lblErrorCosto.setText("Numero entero > 0");
+        }else{
+            lblErrorCosto.setText("Error, inserte numero valido");
+        }
+    }//GEN-LAST:event_txfCostoKeyReleased
+
+    private void txfMisionMinimaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfMisionMinimaKeyReleased
+        String str = txfMisionMinima.getText();
+        if(isNumeric(str)){
+            lblErrorMision.setText("Numero entero > 0");
+        }else{
+            lblErrorMision.setText("Error, inserte numero valido");
+        }
+    }//GEN-LAST:event_txfMisionMinimaKeyReleased
     
     private boolean isNumeric(String str){
         try{

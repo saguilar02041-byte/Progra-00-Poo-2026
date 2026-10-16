@@ -243,6 +243,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txfVida">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfVidaActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfVidaKeyReleased"/>
           </Events>
         </Component>
@@ -321,22 +322,36 @@
         <Component class="javax.swing.JTextField" name="txfDano">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfDanoActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfDanoKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txfRadio">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfRadioKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txfCosto">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfCostoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txfAlcance">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfAlcanceKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txfFrecuencia">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfFrecuenciaActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfFrecuenciaKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txfNombre">
         </Component>
         <Component class="javax.swing.JTextField" name="txfMisionMinima">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txfMisionMinimaKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMisionMinima">
           <Properties>
