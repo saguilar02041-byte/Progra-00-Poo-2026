@@ -4,6 +4,9 @@
  */
 package progra00.poo;
 
+import config.ConfigComponente;
+import config.ManejoArchivos;
+import java.util.ArrayList;
 import progra00.poo.Criaturas.*;
 import progra00.poo.Defensas.*;
 
@@ -11,6 +14,12 @@ import progra00.poo.Defensas.*;
 public class Progra00Poo {
 
     public static void main(String[] args) {
+        
+    ArrayList<ConfigComponente> listaComponentes = ManejoArchivos.leerArchivo("/home/paula/Documents/POO/Progra-00-Poo-2026/componentes.txt");
+    
+    for (ConfigComponente c : listaComponentes) {
+    //TODO: hay que clasificar cada uno
+    }
     
         //esto es para copiar y pegar en las clases
     //==========================================
