@@ -152,6 +152,7 @@ public class FrameConfig extends javax.swing.JFrame {
             }
         });
 
+        txfMisionMinima.addActionListener(this::txfMisionMinimaActionPerformed);
         txfMisionMinima.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txfMisionMinimaKeyReleased(evt);
@@ -272,7 +273,7 @@ public class FrameConfig extends javax.swing.JFrame {
             .addGroup(pnlConfigLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlConfigLayout.setVerticalGroup(
             pnlConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,6 +495,10 @@ public class FrameConfig extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         ManejoArchivos.crearEscribirArchivo(configuraciones);
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txfMisionMinimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfMisionMinimaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfMisionMinimaActionPerformed
     
     private boolean isNumeric(String str){
         try{
