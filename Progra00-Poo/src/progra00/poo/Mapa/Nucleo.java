@@ -4,17 +4,26 @@
  */
 package progra00.poo.Mapa;
 
-public class Nucleo {
-    //nucleo del mapa
-    
-    private int vida;
+import progra00.poo.Defensa;
+import progra00.poo.Tropa;
 
+public class Nucleo extends Defensa{
+
+    //==========================================
+    // constructores
+    //==========================================
+    
     public Nucleo(int vida) {
-        this.vida = vida;
+        super("Núcleo de oxígeno", vida);
     }
 
-    public int getVida() {
-        return vida;
+    //==========================================
+    // métodos
+    //==========================================
+
+    @Override
+    public boolean puedeAtacar(Tropa obj) {
+        return false;
     }
     
     
