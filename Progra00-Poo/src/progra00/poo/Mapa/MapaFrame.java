@@ -7,7 +7,14 @@ package progra00.poo.Mapa;
 import java.awt.Color;
 import java.util.HashSet;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import progra00.poo.Defensa;
+import progra00.poo.Defensas.AlcanceMedio;
+import progra00.poo.Defensas.AtaqueMultiple;
+import progra00.poo.Defensas.Barrera;
+import progra00.poo.Defensas.Contacto;
+import progra00.poo.Defensas.Dron;
+import progra00.poo.Defensas.Impacto;
 
 
 public class MapaFrame extends javax.swing.JFrame {
@@ -15,31 +22,40 @@ public class MapaFrame extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MapaFrame.class.getName());
     
     Nucleo nucleo;
-    
+    Mapa mapa;
     
     /**
      * Creates new form MapaFrame
      */
     public MapaFrame() {
         this.nucleo = new Nucleo(200);
+        this.mapa = new Mapa();
         
         initComponents();
     }
     
     
     
-    public void addDefensa(int i, int j){
+    public void addDefensa(int i, int j, Defensa nueva, Color color){
         
+        //creo el label
         JLabel nuevo = new JLabel();
-        nuevo.setBackground(Color.red);
+        nuevo.setBackground(color);
         nuevo.setOpaque(true);
         
+        //lo coloco
         jpnlTablero.add(nuevo);
         nuevo.setBounds(i*20, j*20, 20, 20);
         
+        //agrego a la matriz
+        mapa.addDefensa(i, j, nueva);
+        
     }
     
-    
+    public void eliminarDefensa(int i, int j){
+        
+        mapa.addDefensa(i, j, null);
+    }
     
     
     
@@ -56,12 +72,13 @@ public class MapaFrame extends javax.swing.JFrame {
         jpnlTablero = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
         cmbxDefensas = new javax.swing.JComboBox<>();
-        txtI = new javax.swing.JTextField();
         txtJ = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblWarningI = new javax.swing.JLabel();
         lblWarningJ = new javax.swing.JLabel();
+        txtI = new javax.swing.JTextField();
+        btnAgregar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,11 +88,11 @@ public class MapaFrame extends javax.swing.JFrame {
         jpnlTablero.setLayout(jpnlTableroLayout);
         jpnlTableroLayout.setHorizontalGroup(
             jpnlTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
         jpnlTableroLayout.setVerticalGroup(
             jpnlTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 522, Short.MAX_VALUE)
         );
 
         btnAgregar.setBackground(new java.awt.Color(102, 255, 102));
@@ -85,13 +102,26 @@ public class MapaFrame extends javax.swing.JFrame {
 
         cmbxDefensas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AlcanceMedio", "AtaqueMultiple", "Barrera", "Contacto", "Dron", "Impacto" }));
 
+        txtJ.setPreferredSize(new java.awt.Dimension(75, 30));
+        txtJ.addActionListener(this::txtJActionPerformed);
+
         jLabel1.setText("i :");
 
         jLabel2.setText("j :");
 
         lblWarningI.setText("i entre 0 y 25");
+        lblWarningI.setPreferredSize(new java.awt.Dimension(80, 20));
 
         lblWarningJ.setText("j entre 0 y 25");
+        lblWarningJ.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        txtI.setPreferredSize(new java.awt.Dimension(75, 30));
+        txtI.addActionListener(this::txtIActionPerformed);
+
+        btnAgregar1.setBackground(new java.awt.Color(255, 102, 102));
+        btnAgregar1.setForeground(new java.awt.Color(153, 0, 0));
+        btnAgregar1.setText("Eliminar");
+        btnAgregar1.addActionListener(this::btnAgregar1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,48 +132,53 @@ public class MapaFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpnlTablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jpnlTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbxDefensas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblWarningJ, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblWarningJ, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cmbxDefensas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(12, 12, 12)
                                 .addComponent(txtI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblWarningI, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
-                        .addComponent(btnAgregar)
-                        .addGap(24, 24, 24))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblWarningI, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(202, 202, 202)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgregar1)
+                            .addComponent(btnAgregar))
+                        .addGap(21, 21, 21))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jpnlTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbxDefensas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbxDefensas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
+                    .addComponent(lblWarningI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar)
-                    .addComponent(lblWarningI))
+                    .addComponent(btnAgregar1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWarningJ))
-                .addGap(0, 21, Short.MAX_VALUE))
+                    .addComponent(lblWarningJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,20 +199,76 @@ public class MapaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        
+        //saco el i,j
         int i = Integer.parseInt(txtI.getText());
         int j = Integer.parseInt(txtJ.getText());
         
-        if(i < 0 || 25 < i){
+        //valido que esté en el rango
+        if(i < 5 || 20 < i){
             lblWarningI.setText("La defensa debe de ir dentro del tablero");
+            return;
         }
-        if(j < 0 || 25 < j){
+        if(j < 5 || 20 < j){
             lblWarningJ.setText("La defensa debe ir dentro del tablero");
+            return;
         }
         
-        this.addDefensa(i, j);
+        //verifico que no haya nada
+        if(mapa.getDefensa(i, j) != null){
+            JOptionPane.showMessageDialog(null, "No puedes poner encima de otra defensa", "Warning!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
+        //saco el elemento del combox 
+        int seleccionado = cmbxDefensas.getSelectedIndex();
+        Defensa nuevo;
         
+        switch (seleccionado) {
+            case 0 -> {
+                nuevo = new AlcanceMedio(" ", 10, 10, 2);
+                this.addDefensa(i, j, nuevo, Color.yellow);
+            }
+            case 1 -> {
+                nuevo = new AtaqueMultiple(" ", 10, 10);
+                this.addDefensa(i, j, nuevo, Color.green);
+            }
+            case 2 -> {
+                nuevo = new Barrera(" ", 20);
+                this.addDefensa(i, j, nuevo, Color.black);
+            }
+            case 3 -> {
+                nuevo = new Contacto(" ", 10, 10);
+                this.addDefensa(i, j, nuevo, Color.red);
+            }
+            case 4 -> {
+                nuevo = new Dron(" ", 10, 10);
+                this.addDefensa(i, j, nuevo, Color.orange);
+            }
+            default -> {
+                nuevo = new Impacto(" ", 10, 10);
+                this.addDefensa(i, j, nuevo, Color.pink);
+            }
+        }        
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtJActionPerformed
+
+    private void txtIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIActionPerformed
+
+    private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
+
+        //saco el i,j
+        int i = Integer.parseInt(txtI.getText());
+        int j = Integer.parseInt(txtJ.getText());
+        
+        this.eliminarDefensa(i, j);
+        
+    }//GEN-LAST:event_btnAgregar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +297,7 @@ public class MapaFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregar1;
     private javax.swing.JComboBox<String> cmbxDefensas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
