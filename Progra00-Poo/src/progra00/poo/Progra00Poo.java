@@ -43,15 +43,7 @@ public class Progra00Poo {
         //ignoremos
         
         
-    Defensa droncito = new Dron("droncito", 10, 10);
-    Volador mosca = new Volador("mosca", 10, 10);
-
-        System.out.println(droncito.puedeAtacar(mosca));
-        System.out.println(mosca.puedeAtacar(mosca));
-        
-        mosca.morir();
-        droncito.morir();
-        
+    
         
         
         

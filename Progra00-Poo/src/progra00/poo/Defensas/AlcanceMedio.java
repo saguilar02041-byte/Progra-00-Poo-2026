@@ -30,7 +30,12 @@ public class AlcanceMedio extends DefensaAtacante {
     public void atacar(Criatura enemigo) {
         LargoAlcance.atacar(this, enemigo, this.getDaño(), alcance);
     }
-
+    
+    
+    public int getDistanciaAtaque() {
+        return alcance;
+    }
+    
     //==========================================
     // gets, setters
     //==========================================

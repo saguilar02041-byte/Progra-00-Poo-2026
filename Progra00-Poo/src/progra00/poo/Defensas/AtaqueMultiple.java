@@ -26,7 +26,6 @@ public class AtaqueMultiple extends DefensaAtacante {
     
     public void atacar(ArrayList<Tropa> adyacentes) {
         AtacarVarios.atacar(this, adyacentes, this.getDaño());
-        this.morir();
     }
 
     @Override

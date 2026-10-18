@@ -15,7 +15,7 @@ public class CortoAlcance {
     // métodos
     //==========================================
     
-    public static void atacar(Tropa tropa, Tropa enemiga, int daño){
+    public static void atacar(Tropa atacante, Tropa enemiga, int daño){
         
         if( /* tiene un enemigo cerca*/ true )
             enemiga.setVida( enemiga.getVida() - daño );

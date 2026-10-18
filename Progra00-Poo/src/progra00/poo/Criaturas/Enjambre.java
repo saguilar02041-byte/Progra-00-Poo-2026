@@ -27,7 +27,6 @@ public class Enjambre extends Criatura {
 
     public void atacar(ArrayList<Tropa> adyacentes) {
         AtacarVarios.atacar(this, adyacentes, this.getDaño());
-        this.morir();
     }
 
     @Override

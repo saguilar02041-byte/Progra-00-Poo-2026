@@ -84,9 +84,9 @@ public class MapaFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblWarningI = new javax.swing.JLabel();
-        lblWarningJ = new javax.swing.JLabel();
         txtI = new javax.swing.JTextField();
         btnAgregar1 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,11 +117,8 @@ public class MapaFrame extends javax.swing.JFrame {
 
         jLabel2.setText("j :");
 
-        lblWarningI.setText("i entre 0 y 25");
+        lblWarningI.setText("i,j entre 0 y 25");
         lblWarningI.setPreferredSize(new java.awt.Dimension(80, 20));
-
-        lblWarningJ.setText("j entre 0 y 25");
-        lblWarningJ.setPreferredSize(new java.awt.Dimension(80, 20));
 
         txtI.setPreferredSize(new java.awt.Dimension(75, 30));
         txtI.addActionListener(this::txtIActionPerformed);
@@ -130,6 +127,9 @@ public class MapaFrame extends javax.swing.JFrame {
         btnAgregar1.setForeground(new java.awt.Color(153, 0, 0));
         btnAgregar1.setText("Eliminar");
         btnAgregar1.addActionListener(this::btnAgregar1ActionPerformed);
+
+        btnExit.setText("salir");
+        btnExit.addActionListener(this::btnExitActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,8 +145,8 @@ public class MapaFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblWarningJ, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(391, 391, 391)
+                                .addComponent(btnExit)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,9 +158,9 @@ public class MapaFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(12, 12, 12)
                                 .addComponent(txtI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblWarningI, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(202, 202, 202)))
+                                .addGap(26, 26, 26)
+                                .addComponent(lblWarningI, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAgregar1)
                             .addComponent(btnAgregar))
@@ -182,10 +182,11 @@ public class MapaFrame extends javax.swing.JFrame {
                     .addComponent(txtI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWarningJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExit))
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
@@ -213,12 +214,8 @@ public class MapaFrame extends javax.swing.JFrame {
         int j = Integer.parseInt(txtJ.getText());
         
         //valido que esté en el rango
-        if(i < 5 || 20 < i){
+        if(i < 5 || 20 < i || j < 5 || 20 < j){
             lblWarningI.setText("La defensa debe de ir dentro del tablero");
-            return;
-        }
-        if(j < 5 || 20 < j){
-            lblWarningJ.setText("La defensa debe ir dentro del tablero");
             return;
         }
         
@@ -291,6 +288,11 @@ public class MapaFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgregar1ActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        this.setVisible(false);
+        //no sé como hacer para que se cierre
+    }//GEN-LAST:event_btnExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,13 +321,13 @@ public class MapaFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAgregar1;
+    private javax.swing.JButton btnExit;
     private javax.swing.JComboBox<String> cmbxDefensas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jpnlTablero;
     private javax.swing.JLabel lblWarningI;
-    private javax.swing.JLabel lblWarningJ;
     private javax.swing.JTextField txtI;
     private javax.swing.JTextField txtJ;
     // End of variables declaration//GEN-END:variables
