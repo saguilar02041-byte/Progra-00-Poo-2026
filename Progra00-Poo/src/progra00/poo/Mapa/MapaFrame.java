@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.util.HashSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import progra00.poo.Defensas.Defensa;
 import progra00.poo.Defensas.AlcanceMedio;
 import progra00.poo.Defensas.AtaqueMultiple;
@@ -21,7 +22,6 @@ public class MapaFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MapaFrame.class.getName());
     
-    private static final int tamCelda = 20;
     private static final int tamMapa = 25;
     
     
@@ -37,8 +37,9 @@ public class MapaFrame extends javax.swing.JFrame {
     public MapaFrame() {
         this.nucleo = new Nucleo(200);
         this.mapa = new Mapa();
-        
+                
         initComponents();
+        dibujarNucleo();
     }
     
     
@@ -66,6 +67,13 @@ public class MapaFrame extends javax.swing.JFrame {
     }
     
     
+    private void dibujarNucleo() {
+        JLabel lblNucleo = new JLabel("N", SwingConstants.CENTER);
+        lblNucleo.setBackground(Color.CYAN);
+        lblNucleo.setOpaque(true);
+        lblNucleo.setBounds(mapa.getNucleo().getI() * 20, mapa.getNucleo().getJ() * 20, 20, 20);
+        jpnlTablero.add(lblNucleo);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
