@@ -4,7 +4,6 @@
  */
 package progra00.poo.Defensas;
 
-import progra00.poo.Defensa;
 import progra00.poo.Tropa;
 
 public class Barrera extends Defensa {

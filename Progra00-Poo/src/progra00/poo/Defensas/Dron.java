@@ -4,7 +4,7 @@
  */
 package progra00.poo.Defensas;
 
-import progra00.poo.Criatura;
+import progra00.poo.Criaturas.Criatura;
 import progra00.poo.Variantes.CortoAlcance;
 import progra00.poo.Variantes.Volar;
 

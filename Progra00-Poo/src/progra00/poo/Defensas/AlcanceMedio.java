@@ -4,7 +4,7 @@
  */
 package progra00.poo.Defensas;
 
-import progra00.poo.Criatura;
+import progra00.poo.Criaturas.Criatura;
 import progra00.poo.Variantes.LargoAlcance;
 
 public class AlcanceMedio extends DefensaAtacante {

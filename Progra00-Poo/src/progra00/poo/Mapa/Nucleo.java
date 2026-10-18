@@ -4,7 +4,7 @@
  */
 package progra00.poo.Mapa;
 
-import progra00.poo.Defensa;
+import progra00.poo.Defensas.Defensa;
 import progra00.poo.Tropa;
 
 public class Nucleo extends Defensa{

@@ -6,8 +6,8 @@ package progra00.poo.Mapa;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import progra00.poo.Criatura;
-import progra00.poo.Defensa;
+import progra00.poo.Criaturas.Criatura;
+import progra00.poo.Defensas.Defensa;
 import progra00.poo.Tropa;
 
 public class Mapa implements Serializable {

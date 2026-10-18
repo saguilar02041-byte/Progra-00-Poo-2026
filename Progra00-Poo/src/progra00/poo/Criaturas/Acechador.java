@@ -4,8 +4,7 @@
  */
 package progra00.poo.Criaturas;
 
-import progra00.poo.Criatura;
-import progra00.poo.Defensa;
+import progra00.poo.Defensas.Defensa;
 import progra00.poo.Variantes.CortoAlcance;
 
 public class Acechador extends Criatura {

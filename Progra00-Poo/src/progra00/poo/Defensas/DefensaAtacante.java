@@ -4,8 +4,8 @@
  */
 package progra00.poo.Defensas;
 
-import progra00.poo.Criatura;
-import progra00.poo.Defensa;
+import progra00.poo.Criaturas.Criatura;
+import progra00.poo.Mapa.HiloDefensa;
 import progra00.poo.Tropa;
 
 /**
@@ -16,6 +16,7 @@ public abstract class DefensaAtacante extends Defensa {
     //===============Atributos==================
     
     private int daño;
+    private transient Thread hilo;
     
     //==========================================
     // constructores
@@ -36,6 +37,24 @@ public abstract class DefensaAtacante extends Defensa {
     }    
     
     public abstract void atacar(Criatura enemigo);
+    
+    
+    public void activar() {
+        
+        if (mapa == null || hilo != null) {
+            return;
+        }
+        hilo = new HiloDefensa(this, mapa);
+        hilo.start();
+    }
+
+    public void actuar() {
+        Criatura objetivo = mapa.criaturaMasCercana(this, getDistanciaAtaque());
+        
+        if (objetivo != null) {
+            atacar(objetivo);
+        }
+    }
     
     //==========================================
     // gets, setters

@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.util.HashSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import progra00.poo.Defensa;
+import progra00.poo.Defensas.Defensa;
 import progra00.poo.Defensas.AlcanceMedio;
 import progra00.poo.Defensas.AtaqueMultiple;
 import progra00.poo.Defensas.Barrera;
