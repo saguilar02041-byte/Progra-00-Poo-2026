@@ -7,6 +7,7 @@ package progra00.poo;
 import progra00.poo.Mapa.Mapa;
 
 public abstract class Tropa {
+
     
     //===============Atributos==================
 
