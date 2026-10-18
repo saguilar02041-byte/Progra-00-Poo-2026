@@ -21,7 +21,14 @@ public class MapaFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MapaFrame.class.getName());
     
+    private static final int tamCelda = 20;
+    private static final int tamMapa = 25;
+    
+    
     Nucleo nucleo;
+    
+    //mapa
+    private final JLabel[][] labels = new JLabel[tamMapa][tamMapa];
     Mapa mapa;
     
     /**
@@ -48,6 +55,7 @@ public class MapaFrame extends javax.swing.JFrame {
         nuevo.setBounds(i*20, j*20, 20, 20);
         
         //agrego a la matriz
+        labels[i][j] = nuevo;
         mapa.addDefensa(i, j, nueva);
         
     }
@@ -265,8 +273,21 @@ public class MapaFrame extends javax.swing.JFrame {
         //saco el i,j
         int i = Integer.parseInt(txtI.getText());
         int j = Integer.parseInt(txtJ.getText());
-        
-        this.eliminarDefensa(i, j);
+
+        //elimino el label
+        JLabel label = labels[i][j];
+
+        if (label == null) {
+            JOptionPane.showMessageDialog(this, "No hay ninguna defensa en esa posición", "Warning!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        jpnlTablero.remove(label);     // lo saco del panel
+        labels[i][j] = null;           // libero la celda visual
+        this.eliminarDefensa(i, j);   // libero la celda del modelo
+
+        jpnlTablero.revalidate();      // sin esto el label sigue dibujado
+        jpnlTablero.repaint();        
         
     }//GEN-LAST:event_btnAgregar1ActionPerformed
 
