@@ -43,13 +43,13 @@ public class FrameConfig extends javax.swing.JFrame {
         txfVida = new javax.swing.JTextField();
         cmbCategoria = new javax.swing.JComboBox<>();
         lblComponente2 = new javax.swing.JLabel();
-        lblDano = new javax.swing.JLabel();
+        lblCant = new javax.swing.JLabel();
         lblComponente4 = new javax.swing.JLabel();
         lblVida = new javax.swing.JLabel();
         lblRadio = new javax.swing.JLabel();
         lblAlcance = new javax.swing.JLabel();
         lblFrecuencia = new javax.swing.JLabel();
-        txfDano = new javax.swing.JTextField();
+        txfCant = new javax.swing.JTextField();
         txfRadio = new javax.swing.JTextField();
         txfCosto = new javax.swing.JTextField();
         txfAlcance = new javax.swing.JTextField();
@@ -101,8 +101,8 @@ public class FrameConfig extends javax.swing.JFrame {
         lblComponente2.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         lblComponente2.setText("Tipo: ");
 
-        lblDano.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
-        lblDano.setText("Daño:");
+        lblCant.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
+        lblCant.setText("Cantidad disponibles:");
 
         lblComponente4.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         lblComponente4.setText("Costo:");
@@ -119,10 +119,10 @@ public class FrameConfig extends javax.swing.JFrame {
         lblFrecuencia.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         lblFrecuencia.setText("Frecuencia:");
 
-        txfDano.addActionListener(this::txfDanoActionPerformed);
-        txfDano.addKeyListener(new java.awt.event.KeyAdapter() {
+        txfCant.addActionListener(this::txfCantActionPerformed);
+        txfCant.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txfDanoKeyReleased(evt);
+                txfCantKeyReleased(evt);
             }
         });
 
@@ -211,7 +211,7 @@ public class FrameConfig extends javax.swing.JFrame {
                 .addComponent(btnGuardar)
                 .addGap(69, 69, 69)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         pnlBotonesLayout.setVerticalGroup(
             pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +229,7 @@ public class FrameConfig extends javax.swing.JFrame {
         pnlConfigLayout.setHorizontalGroup(
             pnlConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConfigLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(pnlConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConfigLayout.createSequentialGroup()
                         .addComponent(lbltitulo)
@@ -237,7 +237,7 @@ public class FrameConfig extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConfigLayout.createSequentialGroup()
                         .addGroup(pnlConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblComponente1)
-                            .addComponent(lblDano)
+                            .addComponent(lblCant)
                             .addComponent(lblVida)
                             .addComponent(lblFrecuencia)
                             .addComponent(lblAlcance)
@@ -255,7 +255,7 @@ public class FrameConfig extends javax.swing.JFrame {
                                 .addComponent(txfRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txfAlcance, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txfFrecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txfDano, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txfCant, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txfMisionMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txfNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbTipo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -298,9 +298,9 @@ public class FrameConfig extends javax.swing.JFrame {
                     .addComponent(lblErrorVida))
                 .addGap(25, 25, 25)
                 .addGroup(pnlConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDano)
+                    .addComponent(lblCant)
                     .addGroup(pnlConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txfDano, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txfCant, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblErrorDano)))
                 .addGap(34, 34, 34)
                 .addGroup(pnlConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -375,14 +375,14 @@ public class FrameConfig extends javax.swing.JFrame {
     String categoria = (String)cmbCategoria.getSelectedItem();
     String tipo = (String)cmbTipo.getSelectedItem();
     int vida = Integer.parseInt(txfVida.getText());
-    int dano = Integer.parseInt(txfDano.getText());
+    int cant = Integer.parseInt(txfCant.getText());
     int frecuencia = Integer.parseInt(txfFrecuencia.getText());
     int alcance = Integer.parseInt(txfAlcance.getText());
     int radio = Integer.parseInt(txfRadio.getText());
     int costo = Integer.parseInt(txfCosto.getText());
     int misionMinima = Integer.parseInt(txfMisionMinima.getText());
     
-    ConfigComponente componente = new ConfigComponente(nombre, categoria, tipo, vida, dano, frecuencia, alcance, radio, costo, misionMinima);
+    ConfigComponente componente = new ConfigComponente(nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
     
     boolean anadido = anadirElemArray(componente);
     if(anadido == true){
@@ -410,10 +410,10 @@ public class FrameConfig extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txfVidaKeyReleased
 
-    private void txfDanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfDanoActionPerformed
+    private void txfCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCantActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_txfDanoActionPerformed
+    }//GEN-LAST:event_txfCantActionPerformed
 
     private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
         // TODO add your handling code here:
@@ -435,14 +435,14 @@ public class FrameConfig extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txfVidaActionPerformed
 
-    private void txfDanoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfDanoKeyReleased
-        String str = txfDano.getText();
+    private void txfCantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfCantKeyReleased
+        String str = txfCant.getText();
         if(isNumeric(str)){
             lblErrorDano.setText("Numero entero > 0");
         }else{
             lblErrorDano.setText("Error, inserte numero valido");
         }
-    }//GEN-LAST:event_txfDanoKeyReleased
+    }//GEN-LAST:event_txfCantKeyReleased
 
     private void txfFrecuenciaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfFrecuenciaKeyReleased
         String str = txfFrecuencia.getText();
@@ -521,11 +521,11 @@ public class FrameConfig extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JLabel lblAlcance;
+    private javax.swing.JLabel lblCant;
     private javax.swing.JLabel lblCategoria1;
     private javax.swing.JLabel lblComponente1;
     private javax.swing.JLabel lblComponente2;
     private javax.swing.JLabel lblComponente4;
-    private javax.swing.JLabel lblDano;
     private javax.swing.JLabel lblErrorAlcance;
     private javax.swing.JLabel lblErrorCosto;
     private javax.swing.JLabel lblErrorDano;
@@ -541,8 +541,8 @@ public class FrameConfig extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlConfig;
     private javax.swing.JTextField txfAlcance;
+    private javax.swing.JTextField txfCant;
     private javax.swing.JTextField txfCosto;
-    private javax.swing.JTextField txfDano;
     private javax.swing.JTextField txfFrecuencia;
     private javax.swing.JTextField txfMisionMinima;
     private javax.swing.JTextField txfNombre;

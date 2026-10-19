@@ -19,7 +19,6 @@ public class ConfigComponente implements Serializable{
     private String categoria;     // "DEFENSA" o "CRIATURA"
     private String tipo;          // "CONTACTO", "ALCANCE", "DRON", "ACECHADOR", ...
     private int vida;
-    private int dano;
     private int frecuencia;
     private int alcance;
     private int radio;
@@ -32,12 +31,11 @@ public class ConfigComponente implements Serializable{
     
     //Constructor
 
-    public ConfigComponente(String nombre, String categoria, String tipo, int vida, int dano, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+    public ConfigComponente(String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.tipo = tipo;
         this.vida = vida;
-        this.dano = dano;
         this.frecuencia = frecuencia;
         this.alcance = alcance;
         this.radio = radio;
@@ -88,13 +86,6 @@ public class ConfigComponente implements Serializable{
         this.vida = vida;
     }
 
-    public int getDano() {
-        return dano;
-    }
-
-    public void setDano(int dano) {
-        this.dano = dano;
-    }
 
     public int getFrecuencia() {
         return frecuencia;
