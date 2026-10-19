@@ -17,9 +17,8 @@ public class AlcanceMedio extends DefensaAtacante {
     // constructores
     //==========================================
     
-    public AlcanceMedio(String nombre, int vida, int daño, int alcance) {
-        super(nombre, vida, daño);
-        this.alcance = alcance;
+    public AlcanceMedio(int dano, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
     }
 
     //==========================================

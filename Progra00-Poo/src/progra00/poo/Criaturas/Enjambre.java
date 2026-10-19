@@ -16,8 +16,8 @@ public class Enjambre extends Criatura {
     // constructores
     //==========================================
     
-    public Enjambre(String nombre, int vida, int daño) {
-        super(nombre, vida, daño);
+    public Enjambre(int dano, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
     }
 
     //==========================================

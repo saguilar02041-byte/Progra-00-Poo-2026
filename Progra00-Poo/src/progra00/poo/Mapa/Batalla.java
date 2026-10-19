@@ -10,7 +10,7 @@ import java.util.Random;
 import progra00.poo.Criaturas.Criatura;
 import progra00.poo.Defensas.Defensa;
 import progra00.poo.Defensas.DefensaAtacante;
-import progra00.poo.FabricaTropas;
+
 
 /**
  * Organiza una batalla:
@@ -72,10 +72,6 @@ public class Batalla {
                 continue;
             }
             
-            Criatura nueva = (Criatura) FabricaTropas.crear(c);
-            porAparecer.add(nueva);
-            todasLasCriaturas.add(nueva);
-            capacidad -= c.getCosto();
         }
     }
 

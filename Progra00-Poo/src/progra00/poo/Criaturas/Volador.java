@@ -14,8 +14,8 @@ public class Volador extends Criatura {
     // constructores
     //==========================================
     
-    public Volador(String nombre, int vida, int daño) {
-        super(nombre, vida, daño);
+    public Volador(int dano, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
     }
 
     //==========================================

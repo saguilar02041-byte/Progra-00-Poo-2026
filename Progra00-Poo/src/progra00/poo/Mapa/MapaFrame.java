@@ -265,27 +265,27 @@ public class MapaFrame extends javax.swing.JFrame {
         
         switch (seleccionado) {
             case 0 -> {
-                nuevo = new AlcanceMedio(" ", 10, 10, 2);
+                nuevo = new AlcanceMedio( 10 , " ", " ", " ", 10 , 10, 10, 10, 10, 10);
                 this.addDefensa(i, j, nuevo, Color.yellow);
             }
             case 1 -> {
-                nuevo = new AtaqueMultiple(" ", 10, 10);
+                nuevo = new AtaqueMultiple( 10 , " ", " ", " ", 10 , 10, 10, 10, 10, 10);
                 this.addDefensa(i, j, nuevo, Color.green);
             }
             case 2 -> {
-                nuevo = new Barrera(" ", 20);
+                nuevo = new Barrera(" ", " ", " ", 10, 10, 10, 10, 10, 10);
                 this.addDefensa(i, j, nuevo, Color.black);
             }
             case 3 -> {
-                nuevo = new Contacto(" ", 10, 10);
+                nuevo = new Contacto( 10 , " ", " ", " ", 10 , 10, 10, 10, 10, 10);
                 this.addDefensa(i, j, nuevo, Color.red);
             }
             case 4 -> {
-                nuevo = new Dron(" ", 10, 10);
+                nuevo = new Dron( 10 , " ", " ", " ", 10 , 10, 10, 10, 10, 10);
                 this.addDefensa(i, j, nuevo, Color.orange);
             }
             default -> {
-                nuevo = new Impacto(" ", 10, 10);
+                nuevo = new Impacto( 10 , " ", " ", " ", 10 , 10, 10, 10, 10, 10);
                 this.addDefensa(i, j, nuevo, Color.pink);
             }
         }

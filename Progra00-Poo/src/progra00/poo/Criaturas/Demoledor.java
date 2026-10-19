@@ -12,12 +12,14 @@ import progra00.poo.Variantes.CortoAlcance;
 
 public class Demoledor extends Criatura {
 
+    private static final long serialVersionUID = 1L;
+
     //==========================================
     // constructores
     //==========================================
-        
-    public Demoledor(String nombre, int vida, int daño) {
-        super(nombre, vida, daño);
+
+    public Demoledor(int dano, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
     }
 
     //==========================================

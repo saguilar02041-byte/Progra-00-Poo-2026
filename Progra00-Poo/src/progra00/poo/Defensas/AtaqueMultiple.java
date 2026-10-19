@@ -16,8 +16,8 @@ public class AtaqueMultiple extends DefensaAtacante {
     // constructores
     //==========================================
     
-    public AtaqueMultiple(String nombre, int vida, int daño) {
-        super(nombre, vida, daño);
+    public AtaqueMultiple(int daño, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(daño, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
     }
 
     //==========================================

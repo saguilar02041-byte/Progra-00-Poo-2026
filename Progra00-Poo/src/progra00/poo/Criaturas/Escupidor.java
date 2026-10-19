@@ -16,11 +16,10 @@ public class Escupidor extends Criatura {
     //==========================================
     // constructores
     //==========================================
-    
-    public Escupidor(String nombre, int vida, int daño, int alcance) {
-        super(nombre, vida, daño);
-        this.alcance = alcance; 
+    public Escupidor(int dano, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
     }
+
 
     //==========================================
     // métodos

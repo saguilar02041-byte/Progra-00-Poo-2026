@@ -14,7 +14,7 @@ public class Nucleo extends Defensa{
     //==========================================
     
     public Nucleo(int vida) {
-        super("Núcleo de oxígeno", vida);
+        super(" ", " ", " ", vida, 1, 1, 1, 1, 1);
     }
 
     //==========================================

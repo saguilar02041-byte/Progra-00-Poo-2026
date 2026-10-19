@@ -15,15 +15,12 @@ public abstract class DefensaAtacante extends Defensa {
     
     //===============Atributos==================
     
-    private int daño;
     private transient Thread hilo;
     
-    //==========================================
-    // constructores
-    //==========================================
-    
-    public DefensaAtacante(String nombre, int vida, int daño) {
-        super(nombre, vida);
+    private int daño;
+
+    public DefensaAtacante(int daño, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
         this.daño = daño;
     }
 

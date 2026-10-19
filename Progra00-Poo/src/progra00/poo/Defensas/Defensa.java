@@ -12,9 +12,10 @@ public abstract class Defensa extends Tropa {
     // constructores
     //==========================================
 
-    public Defensa(String nombre, int vida) {
-        super(nombre, vida);
-    }    
+    public Defensa(String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+    }
+   
     
     //==========================================
     // métodos
