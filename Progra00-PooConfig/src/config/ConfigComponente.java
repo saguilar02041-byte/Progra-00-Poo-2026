@@ -33,7 +33,6 @@ public class ConfigComponente implements Serializable{
     //Constructor
 
     public ConfigComponente(String nombre, String categoria, String tipo, int vida, int dano, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
-        this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
         this.tipo = tipo;

@@ -6,9 +6,6 @@ package config;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-
 /**
  *
  * @author paula
@@ -17,6 +14,8 @@ public class FrameConfig extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameConfig.class.getName());
 
+    private final DefaultComboBoxModel<String> modeloDefensa = new DefaultComboBoxModel<>(new String[]{"Alcance Medio", "Ataque Multiple", "Barrera", "Contacto", "Defensa Atacante", "Dron", "Impacto"});
+    private final DefaultComboBoxModel<String> modeloCriaturas = new DefaultComboBoxModel<>(new String[]{"Acechador", "Demoledor", "Enjambre", "Escupidor", "Volador"});
     private final ArrayList<ConfigComponente> configuraciones = new ArrayList<>();
     
     /**
@@ -426,8 +425,6 @@ public class FrameConfig extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbCategoriaActionPerformed
     
-    private final DefaultComboBoxModel<String> modeloDefensa = new DefaultComboBoxModel<>(new String[]{"Alcance Medio", "Ataque Multiple", "Barrera", "Contacto", "Defensa Atacante", "Dron", "Impacto"});
-    private final DefaultComboBoxModel<String> modeloCriaturas = new DefaultComboBoxModel<>(new String[]{"Acechador", "Demoledor", "Enjambre", "Escupidor", "Volador"});
     
     
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -503,11 +500,14 @@ public class FrameConfig extends javax.swing.JFrame {
     private boolean isNumeric(String str){
         try{
             int numero = Integer.parseInt(str);
-            return true;
+            if(numero <= 0){
+                return false;
+            }else{
+                return true;
+            }
         }catch (Exception e){
             return false;
         }
-    
     }
     /**
      * @param args the command line arguments

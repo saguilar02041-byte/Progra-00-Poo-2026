@@ -15,21 +15,6 @@ public class ManejoArchivos {
     private static final String nombreArchivo = "/home/paula/Documents/POO/Progra-00-Poo-2026/componentes.txt";
 
 
-    /*public static void crearArchivo(){
-        try {
-            
-            FileOutputStream fileOut = new FileOutputStream(nombreArchivo);
-            System.out.println("Se creo un archivo");
-           
-          
-        } catch (FileNotFoundException ex) {
-            System.getLogger(ManejoArchivos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-    
-    }*/
-    
-    
-    
     public static void crearEscribirArchivo(ArrayList<ConfigComponente> lista) {
         
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {
