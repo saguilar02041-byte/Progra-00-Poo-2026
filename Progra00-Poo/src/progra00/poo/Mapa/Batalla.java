@@ -25,7 +25,8 @@ public class Batalla {
     private final ArrayList<Criatura> porAparecer = new ArrayList<>();
     private final ArrayList<Criatura> todasLasCriaturas = new ArrayList<>();   // para la pantalla de resultados
     private final Random azar = new Random();
-
+    
+    int mision;
     private volatile boolean todasHanAparecido = false;
     private volatile String resultado = "EN CURSO";
 
@@ -35,6 +36,7 @@ public class Batalla {
 
     public Batalla(Mapa mapa, ArrayList<ConfigComponente> catalogo, int mision) {
         this.mapa = mapa;
+        this.mision = mision;
         prepararEjercito(catalogo, mision);
     }
 
