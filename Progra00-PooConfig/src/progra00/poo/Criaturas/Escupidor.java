@@ -4,9 +4,6 @@
  */
 package progra00.poo.Criaturas;
 
-import progra00.poo.Defensas.Defensa;
-import progra00.poo.Variantes.LargoAlcance;
-
 public class Escupidor extends Criatura {
 
     

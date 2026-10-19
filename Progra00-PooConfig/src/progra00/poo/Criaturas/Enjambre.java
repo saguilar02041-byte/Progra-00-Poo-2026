@@ -4,12 +4,6 @@
  */
 package progra00.poo.Criaturas;
 
-import java.util.ArrayList;
-import progra00.poo.Defensas.Defensa;
-import progra00.poo.Tropa;
-import progra00.poo.Variantes.AtacarVarios;
-import progra00.poo.Variantes.CortoAlcance;
-
 public class Enjambre extends Criatura {
 
     

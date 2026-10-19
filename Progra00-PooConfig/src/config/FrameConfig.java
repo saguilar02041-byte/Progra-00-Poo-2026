@@ -6,6 +6,19 @@ package config;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import progra00.poo.Defensas.AlcanceMedio;
+import progra00.poo.Defensas.AtaqueMultiple;
+import java.util.Random;
+import progra00.poo.Criaturas.Acechador;
+import progra00.poo.Criaturas.Demoledor;
+import progra00.poo.Criaturas.Enjambre;
+import progra00.poo.Criaturas.Escupidor;
+import progra00.poo.Criaturas.Volador;
+import progra00.poo.Defensas.Barrera;
+import progra00.poo.Defensas.Contacto;
+import progra00.poo.Defensas.DefensaAtacante;
+import progra00.poo.Defensas.Dron;
+import progra00.poo.Defensas.Impacto;
 /**
  *
  * @author paula
@@ -14,9 +27,10 @@ public class FrameConfig extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameConfig.class.getName());
 
-    private final DefaultComboBoxModel<String> modeloDefensa = new DefaultComboBoxModel<>(new String[]{"Alcance Medio", "Ataque Multiple", "Barrera", "Contacto", "Defensa Atacante", "Dron", "Impacto"});
+    private final DefaultComboBoxModel<String> modeloDefensa = new DefaultComboBoxModel<>(new String[]{"Alcance Medio", "Ataque Multiple", "Barrera", "Contacto", "Dron", "Impacto"});
     private final DefaultComboBoxModel<String> modeloCriaturas = new DefaultComboBoxModel<>(new String[]{"Acechador", "Demoledor", "Enjambre", "Escupidor", "Volador"});
     private final ArrayList<ConfigComponente> configuraciones = new ArrayList<>();
+    private int id = 0;
     
     /**
      * Creates new form FrameConfig
@@ -382,32 +396,127 @@ public class FrameConfig extends javax.swing.JFrame {
     int costo = Integer.parseInt(txfCosto.getText());
     int misionMinima = Integer.parseInt(txfMisionMinima.getText());
     
-    ConfigComponente componente = new ConfigComponente(nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+    Random rand = new Random();
+
     
-    boolean anadido = anadirElemArray(componente);
-    if(anadido == true){
-        System.out.println("Elemento anadido");
+    if(categoria.equals("Defensa")){
+        switch (tipo){
+            case "Alcance Medio":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    AlcanceMedio componente = new AlcanceMedio(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Ataque Multiple":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    AtaqueMultiple componente = new AtaqueMultiple(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Barrera":
+                for (int i = 0; i < cant; i++) {
+                    Barrera componente = new Barrera(nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Contacto":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Contacto componente = new Contacto(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Dron":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Dron componente = new Dron(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Impacto":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Impacto componente = new Impacto(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+                
+        }
     }else{
-        System.out.println("Error");
-    }
         
+        switch(tipo){
+            case "Acechador":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Acechador componente = new Acechador(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Demoledor":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Demoledor componente = new Demoledor(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Enjambre":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Enjambre componente = new Enjambre(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Escupidor":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Escupidor componente = new Escupidor(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+            case "Volador":
+                for (int i = 0; i < cant; i++) {
+                    int dano = rand.nextInt(15) + 5;
+                    Volador componente = new Volador(dano, nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+                    componente.setId(id);
+                    id++;
+                    configuraciones.add((ConfigComponente)componente);
+                }
+                break;
+    
+        }
+    
+}
     }//GEN-LAST:event_btnAnadirComponenteActionPerformed
 
-    private boolean anadirElemArray(ConfigComponente componente){
-        boolean anadido = configuraciones.add(componente);
-        if(anadido == true){
-            return true;
-        }
-        return false;  
-    }
     private void txfVidaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfVidaKeyReleased
-        // TODO add your handling code here:
-        String str = txfVida.getText();
-        if(isNumeric(str)){
-            lblErrorVida.setText("Numero entero > 0");
-        }else{
-            lblErrorVida.setText("Error, inserte numero valido");
-        }
+    String str = txfVida.getText();
+    if(isNumeric(str)){
+        lblErrorVida.setText("Numero entero > 0");
+    }else{
+        lblErrorVida.setText("Error, inserte numero valido");
+    }
     }//GEN-LAST:event_txfVidaKeyReleased
 
     private void txfCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfCantActionPerformed

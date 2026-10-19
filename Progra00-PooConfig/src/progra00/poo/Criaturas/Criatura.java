@@ -4,10 +4,6 @@
  */
 package progra00.poo.Criaturas;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import progra00.poo.Defensas.Defensa;
-import progra00.poo.Mapa.Nucleo;
 import progra00.poo.Tropa;
 
 public abstract class Criatura extends Tropa{

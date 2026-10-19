@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class ConfigComponente implements Serializable{
     private static final long serialVersionUID = 1L;
     // ATRIBUTOS
-    private String id;
+    private int id;
     private String nombre;
     private String categoria;     // "DEFENSA" o "CRIATURA"
     private String tipo;          // "CONTACTO", "ALCANCE", "DRON", "ACECHADOR", ...
@@ -46,11 +46,11 @@ public class ConfigComponente implements Serializable{
 
     // GETTERS Y SETTERS
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
