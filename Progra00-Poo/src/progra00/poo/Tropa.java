@@ -5,8 +5,9 @@
 package progra00.poo;
 
 import progra00.poo.Mapa.Mapa;
+import config.ConfigComponente;
 
-public abstract class Tropa {
+public abstract class Tropa extends ConfigComponente {
 
     
     //===============Atributos==================
