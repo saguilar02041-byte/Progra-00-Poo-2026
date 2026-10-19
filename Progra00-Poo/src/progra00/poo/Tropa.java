@@ -26,12 +26,12 @@ public abstract class Tropa extends ConfigComponente {
     //referenciadel mapa
     protected transient Mapa mapa;
     
-    //==========================================
-    // constructores
-    //==========================================
     
-    public Tropa(String nombre, int vida) {
-        super(nombre, nombre, nombre, vida, 10, vida, vida, 1, vida);
+    //===============Constructor==================
+    public Tropa(String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+        this.i = 0;
+        this.j = 0;
     }
     
     //==========================================

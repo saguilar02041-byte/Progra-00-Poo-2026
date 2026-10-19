@@ -19,13 +19,9 @@ public abstract class Criatura extends Tropa{
     //hilo para que se pueda mover
     private Thread hilo;
     
-    //==========================================
-    // constructores
-    //==========================================
-    
-    public Criatura(String nombre, int vida, int daño) {
-        super(nombre, vida);
-        this.daño = daño;
+    public Criatura(int dano, String nombre, String categoria, String tipo, int vida, int frecuencia, int alcance, int radio, int costo, int misionMinima) {
+        super(nombre, categoria, tipo, vida, frecuencia, alcance, radio, costo, misionMinima);
+        this.daño = dano;
     }
     
     //==========================================
