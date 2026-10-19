@@ -4,9 +4,6 @@
  */
 package progra00.poo.Criaturas;
 
-import progra00.poo.Defensas.Defensa;
-import progra00.poo.Variantes.CortoAlcance;
-
 public class Acechador extends Criatura {
     private static final long serialVersionUID = 1L;
     //==========================================
