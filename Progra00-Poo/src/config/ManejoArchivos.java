@@ -45,24 +45,4 @@ public class ManejoArchivos {
             return new ArrayList<>();
         }
     }
-
-    
-    
-    
-    /*public static void crearEscribirArchivo(ArrayList<ConfigComponente> lista) {
-        
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {
-            
-            out.writeObject(lista);
-            System.out.println(lista+ "escrito");
-            
-        } catch (IOException ex) {
-            
-            System.getLogger(ManejoArchivos.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-}*/
-    
-    
-
-  
 }
