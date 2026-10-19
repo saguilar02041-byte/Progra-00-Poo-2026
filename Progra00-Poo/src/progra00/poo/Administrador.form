@@ -51,12 +51,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnConfigTropas" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnModTablero" max="32767" attributes="0"/>
-                                  <Component id="btnEmpezar" min="-2" pref="143" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnModTablero" max="32767" attributes="0"/>
+                              <Component id="btnEmpezar" min="-2" pref="143" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -69,13 +66,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="btnConfigTropas" min="-2" pref="73" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="btnModTablero" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="btnEmpezar" min="-2" pref="85" max="-2" attributes="0"/>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <EmptySpace pref="77" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,14 +83,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; quieres hacer?"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnConfigTropas">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Config Tropas"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfigTropasActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnModTablero">
           <Properties>
