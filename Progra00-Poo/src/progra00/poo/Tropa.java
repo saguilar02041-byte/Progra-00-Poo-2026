@@ -31,8 +31,7 @@ public abstract class Tropa extends ConfigComponente {
     //==========================================
     
     public Tropa(String nombre, int vida) {
-        this.nombre = nombre;
-        this.vida = this.vidaMax = vida;
+        super(nombre, nombre, nombre, vida, 10, vida, vida, 1, vida);
     }
     
     //==========================================

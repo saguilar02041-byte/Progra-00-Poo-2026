@@ -16,7 +16,7 @@ public class FabricaTropas {
 
         String nombre = c.getNombre();
         int vida = c.getVida();
-        int dano = c.getDano();
+        int dano = 10;
 
         // quito espacios y mayúsculas: "Alcance Medio" -> "alcancemedio"
         String tipo = c.getTipo().toLowerCase().replace(" ", "");
