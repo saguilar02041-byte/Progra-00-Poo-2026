@@ -4,6 +4,13 @@
  */
 package progra00.poo.Mapa;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import progra00.poo.Criaturas.Criatura;
@@ -178,6 +185,53 @@ public class Mapa implements Serializable {
         return batallaActiva;
     }
     
-    
+    //==========================================
+    // copiar y guardar el tablero
+    //==========================================
+
+    /** Devuelve una copia independiente del tablero (con copias de todas sus defensas). */
+    public synchronized Mapa copiar() {
+        try {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            try (ObjectOutputStream out = new ObjectOutputStream(bytes)) {
+                out.writeObject(this);
+            }
+            try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes.toByteArray()))) {
+                Mapa copia = (Mapa) in.readObject();
+                copia.reconectar();
+                return copia;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException("No se pudo copiar el tablero: " + e.getMessage(), e);
+        }
+    }
+
+    /** Después de copiar o cargar: cada tropa vuelve a conocer su mapa (en Tropa el atributo 'mapa' es transient). */
+    private synchronized void reconectar() {
+        for (int i = 0; i < 25; i++) {
+            for (int j = 0; j < 25; j++) {
+                if (matriz[i][j] != null) {
+                    matriz[i][j].setMapa(this);
+                }
+            }
+        }
+        batallaActiva = false;
+    }
+
+    /** OPCIONAL: guarda el tablero en un archivo para cargarlo en otra ejecución. */
+    public synchronized void guardarEnArchivo(String ruta) throws IOException {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta))) {
+            out.writeObject(this);
+        }
+    }
+
+    /** OPCIONAL: carga un tablero guardado con guardarEnArchivo. */
+    public static Mapa cargarDeArchivo(String ruta) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(ruta))) {
+            Mapa mapa = (Mapa) in.readObject();
+            mapa.reconectar();
+            return mapa;
+        }
+    }
     
 }

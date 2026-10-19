@@ -129,5 +129,13 @@ public abstract class Tropa extends ConfigComponente {
     public void setMapa(Mapa mapa) {
         this.mapa = mapa;
     }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public void setJ(int j) {
+        this.j = j;
+    }
     
 }

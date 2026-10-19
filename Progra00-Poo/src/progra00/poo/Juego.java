@@ -119,13 +119,8 @@ public class Juego extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         
-        //se crea uno nuevo nuevo
-        Mapa mapa = new Mapa();
-        ArrayList<ConfigComponente> catalogo = new ArrayList<ConfigComponente>();
-        int mision = 1;
         
-        //BatallaFrame batalla = new BatallaFrame(mapa, catalogo, mision);
-        Administrador admin = new Administrador();
+        Administrador admin = new Administrador(1);
         admin.setVisible(true);
         
         this.setVisible(false);

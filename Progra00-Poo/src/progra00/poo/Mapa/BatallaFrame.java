@@ -5,8 +5,17 @@
 package progra00.poo.Mapa;
 
 import config.ConfigComponente;
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import progra00.poo.Defensas.AlcanceMedio;
+import progra00.poo.Defensas.AtaqueMultiple;
+import progra00.poo.Defensas.Barrera;
+import progra00.poo.Defensas.Contacto;
+import progra00.poo.Defensas.Defensa;
+import progra00.poo.Defensas.Dron;
+import progra00.poo.Defensas.Impacto;
 
 /**
  *
@@ -24,8 +33,61 @@ public class BatallaFrame extends javax.swing.JFrame {
     public BatallaFrame(Mapa mapa, ArrayList<ConfigComponente> catalogo, int mision) {
         this.batalla = new Batalla(mapa, catalogo, mision);
         initComponents();
+        
+        this.pintarNucleo(mapa);
+        this.pintarDefensas(mapa);
     }
-
+    
+    
+    public void addDefensa(int i, int j, Color color){
+        
+        //creo el label
+        JLabel nuevo = new JLabel();
+        nuevo.setBackground(color);
+        nuevo.setOpaque(true);
+        
+        //lo coloco
+        jpnlTablero.add(nuevo);
+        nuevo.setBounds(i*20, j*20, 20, 20); 
+    }
+    
+    public void pintarDefensas(Mapa mapa){
+        
+        for (Defensa defensa : mapa.getDefensas()) {
+            
+            if(defensa instanceof AlcanceMedio){
+                addDefensa(defensa.getI(), defensa.getJ(), Color.yellow);
+            
+            }else if(defensa instanceof AtaqueMultiple){
+                addDefensa(defensa.getI(), defensa.getJ(), Color.green);
+                            
+            }else if(defensa instanceof Barrera){
+                addDefensa(defensa.getI(), defensa.getJ(), Color.black);
+                            
+            }else if(defensa instanceof Contacto){
+                addDefensa(defensa.getI(), defensa.getJ(), Color.red);
+                            
+            }else if(defensa instanceof Dron){
+                addDefensa(defensa.getI(), defensa.getJ(), Color.orange);
+                            
+            }else if(defensa instanceof Impacto){
+                addDefensa(defensa.getI(), defensa.getJ(), Color.pink);
+                            
+            }
+            
+            
+        }
+    }    
+    
+    
+    public void pintarNucleo(Mapa mapa) {
+        JLabel lblNucleo = new JLabel("N", javax.swing.SwingConstants.CENTER);
+        lblNucleo.setBackground(Color.CYAN);
+        lblNucleo.setOpaque(true);
+        lblNucleo.setBounds(mapa.getNucleo().getI() * 20, mapa.getNucleo().getJ() * 20, 20, 20);
+        this.jpnlTablero.add(lblNucleo);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +99,7 @@ public class BatallaFrame extends javax.swing.JFrame {
 
         jpnlTablero = new javax.swing.JPanel();
         lblMision = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,18 +118,25 @@ public class BatallaFrame extends javax.swing.JFrame {
 
         lblMision.setText("Mision : ");
 
+        btnVolver.setText("volver");
+        btnVolver.addActionListener(this::btnVolverActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpnlTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(lblMision, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jpnlTablero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addComponent(lblMision, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver)
+                        .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,15 +144,24 @@ public class BatallaFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jpnlTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblMision, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMision, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jpnlTablero;
     private javax.swing.JLabel lblMision;
     // End of variables declaration//GEN-END:variables

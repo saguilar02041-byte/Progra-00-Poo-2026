@@ -4,24 +4,30 @@
  */
 package progra00.poo;
 
+import config.ConfigComponente;
+import config.ManejoArchivos;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import progra00.poo.Mapa.BatallaFrame;
 import progra00.poo.Mapa.Mapa;
 import progra00.poo.Mapa.MapaFrame;
 
 /**
  *
  * @author sebitas
- */
+ */ 
 public class Administrador extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Administrador.class.getName());
-    Mapa mapa = new Mapa();
-    
+    public Mapa mapa = new Mapa();
+    public int mision;
     
     
     /**
      * Creates new form Administrador
      */
-    public Administrador() {
+    public Administrador(int mision) {
+        this.mision = mision;
         initComponents();
     }
 
@@ -105,12 +111,15 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfigTropasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigTropasActionPerformed
-        // TODO add your handling code here:
+
+        //aquí
+
+
     }//GEN-LAST:event_btnConfigTropasActionPerformed
 
     private void btnModTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModTableroActionPerformed
 
-        MapaFrame mapa = new MapaFrame();
+        MapaFrame mapa = new MapaFrame(this);
         mapa.setVisible(true);
         
         
@@ -119,6 +128,22 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModTableroActionPerformed
 
     private void btnEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezarActionPerformed
+
+        //se crea uno nuevo nuevo
+        /*Mapa mapa = new Mapa();
+        ArrayList<ConfigComponente> catalogo = new ArrayList<ConfigComponente>();
+        int mision = 1;
+        
+        BatallaFrame batalla = new BatallaFrame(mapa, catalogo, mision);
+        batalla.setVisible(true);*/
+        
+        if (mapa.getDefensas().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Primero crea el tablero con defensas (Modificar tablero)");
+            return;
+        }
+        Mapa copia = mapa.copiar();     // la batalla usa una COPIA: el tablero original queda intacto
+        BatallaFrame batalla = new BatallaFrame(copia, new ArrayList<ConfigComponente>(), mision);
+        batalla.setVisible(true);
 
     }//GEN-LAST:event_btnEmpezarActionPerformed
 

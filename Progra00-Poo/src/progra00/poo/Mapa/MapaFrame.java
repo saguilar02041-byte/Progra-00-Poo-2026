@@ -9,6 +9,7 @@ import java.util.HashSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import progra00.poo.Administrador;
 import progra00.poo.Defensas.Defensa;
 import progra00.poo.Defensas.AlcanceMedio;
 import progra00.poo.Defensas.AtaqueMultiple;
@@ -30,19 +31,44 @@ public class MapaFrame extends javax.swing.JFrame {
     //mapa
     private final JLabel[][] labels = new JLabel[tamMapa][tamMapa];
     Mapa mapa;
+    Administrador admin;
     
     /**
      * Creates new form MapaFrame
      */
-    public MapaFrame() {
-        this.nucleo = new Nucleo(200);
-        this.mapa = new Mapa();
-                
-        initComponents();
-        dibujarNucleo();
+    public MapaFrame(Administrador admin) {
+        this.admin = admin;
+        this.mapa = admin.mapa;                         // CAMBIO: antes era new Mapa()
+        this.initComponents();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // CAMBIO: la X solo cierra esta ventana
+        this.dibujarNucleo();
+        this.dibujarDefensasGuardadas();
     }
     
     
+    private void dibujarDefensasGuardadas() {
+        for (Defensa d : mapa.getDefensas()) {
+            JLabel label = new JLabel();
+            label.setBackground(colorDe(d));
+            label.setOpaque(true);
+            label.setBounds(d.getI() * 20, d.getJ() * 20, 20, 20);
+            jpnlTablero.add(label);
+            labels[d.getI()][d.getJ()] = label;         // para poder eliminarla después
+        }
+        jpnlTablero.repaint();
+    }
+
+    private Color colorDe(Defensa d) {
+        return switch (d.getClass().getSimpleName()) {
+            case "AlcanceMedio"   -> Color.yellow;
+            case "AtaqueMultiple" -> Color.green;
+            case "Barrera"        -> Color.black;
+            case "Contacto"       -> Color.red;
+            case "Dron"           -> Color.orange;
+            case "Impacto"        -> Color.pink;
+            default               -> Color.white;
+        };
+    }
     
     public void addDefensa(int i, int j, Defensa nueva, Color color){
         
@@ -262,7 +288,15 @@ public class MapaFrame extends javax.swing.JFrame {
                 nuevo = new Impacto(" ", 10, 10);
                 this.addDefensa(i, j, nuevo, Color.pink);
             }
-        }        
+        }
+        
+        //seteo el lugar donde está
+        nuevo.setI(i);
+        nuevo.setJ(j);
+        
+        //actualizo el mapa
+        admin.mapa = this.mapa;
+            
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJActionPerformed
